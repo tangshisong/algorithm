@@ -1,5 +1,5 @@
 # pku夏令营上机考试150分钟八道题
-### AB都是简单的打印题，要注意输出格式！C题是BFS，D题应该是DP
+### AB都是简单的打印题，要注意输出格式！从C题难度起飞......C题是BFS，D题应该是DP
 [A.数的字典序](http://bailian.openjudge.cn/xly2019/A/)
 ```cpp
 #include<iostream>
