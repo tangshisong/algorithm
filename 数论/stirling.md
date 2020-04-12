@@ -1,1 +1,1 @@
-![](https://bkimg.cdn.bcebos.com/pic/4bed2e738bd4b31c19ead27a86d6277f9f2ff819)
+![](https://latex.codecogs.com/png.latex?n%21%5Capprox%20%5Csqrt%7B2%20%5Cpi%20n%7D%20%28%5Cfrac%7Bn%7D%7Be%7D%29%5E%7Bn%7D)
