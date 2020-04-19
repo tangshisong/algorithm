@@ -1,0 +1,36 @@
+## 栈
+```cpp
+#include<stack> 
+using namespace std;
+int main()
+{
+	stack<int> s;  //初始化 
+	s.push(1);  //压栈 
+	s.pop();  //弹栈 
+	s.empty();  //空否 
+	s.top();  //取栈顶 
+	s.size();  //栈大小 
+}
+```
+## 队列
+循环队列：  
+初始化：front = rear = 0
+入队：（++rear）%size
+出队：（++front）%size
+队空：rear == front
+队满：rear + 1 == front
+```cpp
+#include<iostream>
+#include<queue> 
+using namespace std;
+int main()
+{
+	queue<int> q;
+	q.empty();
+	q.push(0);
+	q.pop();
+	q.size();
+	q.front();  //除了存取不一样 其他都和栈一样
+	q.back();
+}
+```
