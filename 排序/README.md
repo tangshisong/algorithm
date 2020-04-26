@@ -101,9 +101,58 @@ void quick_sort(int num[],int len)
 ## 选择排序
 
 ### 简单选择
-
+```cpp
+//直接选择排序
+/*算法：寻找后面的最小值，交换*/ 
+void choose_sort(int num[],int len)
+{
+	for(int i = 0;i < len-1;i++)
+	{
+		int j = i ;
+		for(int k = i+1;k < len;k++)
+		if(num[k] < num[j])
+		j = k;
+		Swap(num[i],num[j]); 
+	}
+}
+```
 ### 堆排序
+```cpp
+//堆排序
+/*算法：先建堆，每次取最大堆的第一个元素直到堆空*/ 
+//num.1:保持最大堆
+void keep_heap(int*num,int size,int i) //从1开始 
+{
+	int temp = num[i];//当前元素 
+	for(int k = 2*i;k <= size;k *= 2) //检查当前元素的子树 
+	{
+		//比较左右儿子的大小，选择最大的那个结点 
+		if(k+1 <= size&&num[k+1] > num[k])
+		++k;
+		if(num[k] > num[i]) //将儿子结点赋给父结点 
+		{
+			num[i] = num[k];
+			i = k;
+		}
+		else 
+		break;	 
+	}
+	num[i] = temp;  //找到父节点应该放的位置
+}
 
+void heap_sort(int* num,int size)
+{
+	for(int i = size/2;i > 0;i--)//num.2:建堆
+	keep_heap(num,size,i);
+	
+	for(int i=size ;i > 1;i--)//num.3:排序 
+	{
+		Swap(num[1],num[i]);
+		size--;
+		keep_heap(num,size,1);
+	} 
+}
+```
 ## 归并排序
 
 ## 基数排序
