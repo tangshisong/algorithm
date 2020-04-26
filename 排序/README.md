@@ -154,5 +154,41 @@ void heap_sort(int* num,int size)
 }
 ```
 ## 归并排序
+```cpp
+/*归并排序*/  /*外排序的利器*/ 
+//递归算法 
+/*num为待排数组，temp临时存放数组，left左边起点，right右边起点，rightend右边终点*/ 
+void merge(int *num,int *temp,int left,int right,int rightend)//归并
+{
+	int leftend = right-1;
+	int tempbegin = left;//临时存放数组起始位置
+	 
+	while(left<=leftend&&right<=rightend)//合并两个数组到temp 
+	{
+		if(num[left]<num[right])
+		temp[tempbegin++]=num[left++];
+		else
+		temp[tempbegin++]=num[right++];
+	}
+	
+	while(left<=leftend)          //若有未完成的则直接放入 
+	temp[tempbegin++]=num[left++];
+	while(right<=rightend)
+	temp[tempbegin++]=num[right++];
+	
+	for(int i=0;i<=rightend;i++)//将排序完成的数替代原数组 
+	num[i]=temp[i];             //迭代算法不需要导入 
+}
 
-## 基数排序
+void msort(int *num,int *temp,int left,int rightend)//分治 
+{
+	if(left<rightend)//递归出口 
+	{
+		int center=(left+rightend)/2;//分治 
+		msort(num,temp,left,center);
+		msort(num,temp,center+1,rightend);
+		
+		merge(num,temp,left,center+1,rightend);
+	}
+}
+```
