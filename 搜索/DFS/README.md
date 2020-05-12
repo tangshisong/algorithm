@@ -1,7 +1,7 @@
 ## DFS
 DFS就是暴力搜索，通过剪枝来优化解空间。其优化解法常常是dp。  
 dfs主要是对应多个选择（选与不选的问题），从不同的分支往下搜索。  
-## 模板
+## 通用模板
 ```cpp
 void DFS(para) //参数用来表示状态
 {
@@ -26,6 +26,35 @@ void DFS(para) //参数用来表示状态
 		}
 	}
 }
+```
+
+## 网格模板
+```cpp
+int map[N][N],vis[N][N];
+int dir[4][2] = {0,1,0,-1,1,0,-1,0};  //方向向量
+int check(int x,int y)
+{
+	if(!vis[x][y]&&...)
+	return 1;
+	return 0;
+}
+
+
+void dfs(int x,int y)
+{
+	if(出现某个解)
+	{
+		处理
+		return; 
+	}
+	
+	for(int i = 0;i < 4;++i)
+	if(check(x+dir[i][0],y+dir[i][1]))
+	{
+		vis[x+dir[i][0]][y+dir[i][i]] = 1;
+		dfs(x+dir[i][0],y+dir[i][1]);
+	}
+ } 
 ```
 ## 什么时候有for
 for循环也是一种选择的体现，比如说一个顶点有很多条分支，这时就可以使用for依次遍历各个分支，然后把这个分支所在的节点作为参数传递到dfs中，进行下一次的深搜。通常图问题（抽象化的）都会采用for  
