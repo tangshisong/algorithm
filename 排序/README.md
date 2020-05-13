@@ -1,3 +1,4 @@
+![](https://github.com/tangshisong/algorithm/blob/master/pic/8.png)
 ## 插入排序
 将一个记录插入到已排好序的有序表中，从而得到一个新的有序表
 ### 直接插入
