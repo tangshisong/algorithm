@@ -192,3 +192,62 @@ void msort(int *num,int *temp,int left,int rightend)//分治
 	}
 }
 ```
+
+## 基数排序
+```cpp
+#include<iostream>
+#define N 10
+using namespace std;
+
+int get_max(int* num,int n)
+{
+	//取得数组的最大值以确定最大base
+	int max = num[0];
+	for(int i = 1;i < n;++i)
+	if(num[i] > max)
+	max = num[i];
+	return max;
+}
+
+void base_sort(int* num,int n,int base)
+{
+	int temp[n];
+	int bucket[10] = {0}; 
+	
+	//按照base位数字计数 
+	for(int i = 0;i < n;++i)
+	bucket[(num[i]/base)%10]++;
+	
+	//计算每个数在整个桶中的绝对位置 
+	for(int i = 1;i < 10;++i)
+	bucket[i] += bucket[i-1];
+	
+	//按照每个数的base位放入绝对位置 
+	for(int i = n-1;i >= 0;--i)
+	{
+		temp[bucket[(num[i]/base)%10]-1] = num[i];
+		bucket[(num[i]/base)%10]--;
+	}
+	
+	//重新赋值给num 
+	for(int i = 0;i < n;++i)
+	num[i] = temp[i];
+}
+
+void radix_sort(int* num,int n)
+{
+	int max = get_max(num,n);
+	for(int base = 1;max/base > 0;base *= 10)
+	base_sort(num,n,base);
+}
+
+int main()
+{
+	int num[10] = {999,822,711,699,115,14,30,211,121,110};
+	radix_sort(num,10);
+	for(int i = 0;i < 10;++i)
+	cout<<num[i]<<" ";
+}
+```
+
+
