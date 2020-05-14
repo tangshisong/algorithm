@@ -10,6 +10,7 @@ dp[i][j] = 有多少种方式从从(0,0)走到(i,j)
 dp[i][j] = dp[i-1][j] + dp[i][j-1]  
 判边界：  
 dp[0][j] = dp[i][0] = 1，只有一种方案。  
+实际上这是一个格路问题，其方案数就是C(m+n,n)
 ```cpp
     int uniquePaths(int m, int n) {
         int dp[100][100];
@@ -21,6 +22,31 @@ dp[0][j] = dp[i][0] = 1，只有一种方案。
             dp[i][j] = 1;
             else
             dp[i][j] = dp[i-1][j] + dp[i][j-1];
+        }
+        return dp[m-1][n-1];
+    }
+```
+
+
+## [带障碍的坐标路径](https://leetcode-cn.com/problems/unique-paths-ii/)
+相对于上一个题，在坐标中加入了障碍。状态方程还是一致的，不过需要在处理的时候需要检查是否存在障碍。  
+```cpp
+    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+        int dp[100][100];
+        memset(dp,0,sizeof(dp));
+        int m = obstacleGrid.size();
+        int n = obstacleGrid[0].size();
+        if(!obstacleGrid[0][0])
+        dp[0][0] = 1;
+        
+        for(int i = 0;i < m;++i)
+        for(int j = 0;j < n;++j)
+        if(!obstacleGrid[i][j])
+        {
+            if(i-1 >= 0)
+            dp[i][j] += dp[i-1][j] ;
+            if(j-1 >= 0)
+            dp[i][j] += dp[i][j-1];
         }
         return dp[m-1][n-1];
     }
