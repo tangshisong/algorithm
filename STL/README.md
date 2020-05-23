@@ -77,3 +77,19 @@ s.empty()  是否空
 s.size()  大小    
 ### priority_queue 
 优先级队列适配器类使用的是矢量容器vector<T>   
+小根堆：priority_queue<T,vector<T>,greater<T> > q    
+默认是大根堆：priority_queue<T> q   
+自定义数据类型：  
+```cpp
+struct node{
+    int x,y;
+    node(int a = 0,int b = 0){x = a; y = b;}
+    }
+struct cmp{
+    bool operator()(node a ,node b){  //重载<
+    if(a.x == b.x)
+    return a.y < b.y;
+    return a.x < b.x;
+}
+priority_queue<node,vector<node>,cmp> q;//创建大根堆
+```
