@@ -1,7 +1,8 @@
-# []()
+# [合法的IP地址](https://leetcode-cn.com/problems/restore-ip-addresses/)
 ```cpp
 //string substr(int pos = 0,int n = npos) const;//返回pos开始的n个字符组成的字符串
 //string &erase(int pos = 0, int n = npos);//删除pos开始的n个字符，返回修改后的字符串
+//int stoi(string)//将string类数字转换为int
 class Solution {
 public:
     vector<string> ans;
